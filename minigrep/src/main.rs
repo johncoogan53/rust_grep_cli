@@ -1,13 +1,13 @@
 use std::env;
 use std::fs;
-
+//cargo run -- test txt_files/poem.txt
 fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::new(&args);
 
     let contents = fs::read_to_string(&config.file_path)
-        .expect(&format!("File at {} should exist", &config.file_path));
+        .unwrap_or_else(|_| panic!("File at {} should exist", &config.file_path));
 
     println!("Searching for: {}", config.query);
     println!("File Contents: \n{}", contents);
