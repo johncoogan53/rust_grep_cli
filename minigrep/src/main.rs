@@ -1,35 +1,27 @@
 use std::env;
-use std::fs;
+use std::process;
+
+use minigrep::Config; //minigrep is the crates name
+                      //all imports from the library crate into the binary crate require
+                      //the minigrep namespace
+
 //cargo run -- test txt_files/poem.txt
 fn main() {
+    //parse the command line entry
     let args: Vec<String> = env::args().collect();
-
-    let config = Config::new(&args);
-
-    let contents = fs::read_to_string(&config.file_path)
-        .unwrap_or_else(|_| panic!("File at {} should exist", &config.file_path));
-
+    //create a config struct to hold CLI arguments
+    let config = Config::build(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {err}");
+        process::exit(1);
+    });
+    //indicate search keyword and file
     println!("Searching for: {}", config.query);
-    println!("File Contents: \n{}", contents);
-}
-
-struct Config {
-    query: String,
-    file_path: String,
-}
-
-impl Config {
-    fn new(args: &[String]) -> Config {
-        //argument signature could be Vec<String> but dereference coercion in Rust
-        //makes &Vec<T> automatically the slice &[String] to prevent ownership.
-        let query: String = args
-            .get(1)
-            .expect("There should be a first argument to the CLI")
-            .clone();
-        let file_path: String = args
-            .get(2)
-            .expect("There should be a second argument to the CLI")
-            .clone();
-        Config { query, file_path }
+    println!("In file: {}", config.file_path);
+    //run the search
+    if let Err(e) = minigrep::run(config) {
+        //run returns the unit type so we just care about
+        //catching the error case
+        println!("Application error: {e}");
+        process::exit(1);
     }
 }
