@@ -24,3 +24,25 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     println!("File Contents: \n{}", contents);
     Ok(())
 }
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    //because this function will return a slice of contents, it must live as long as the contents variable
+    for line in contents.lines(){
+        for 
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+        Rust:
+        safe, fast, productive.
+        Pick three.";
+        assert_eq!(vec!["safe, fast productive."], search(query, contents));
+    }
+}
