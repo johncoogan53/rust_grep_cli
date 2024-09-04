@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Install Rust
@@ -25,9 +25,12 @@ jobs:
 
     - name: Run cargo fmt (Check formatting)
       run: cargo fmt -- --check
+      working-directory: minigrep
 
     - name: Run cargo clippy (Linting)
       run: cargo clippy -- -D warnings
+      working-directory: minigrep
 
     - name: Run cargo test (Testing)
       run: cargo test --all
+      working-directory: minigrep
