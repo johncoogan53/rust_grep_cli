@@ -24,7 +24,6 @@ jobs:
       with:
         toolchain: stable
         override: true
-        components: clippy
 
     - name: Check
       run: cargo check
