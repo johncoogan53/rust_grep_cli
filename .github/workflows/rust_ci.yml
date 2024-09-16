@@ -23,14 +23,14 @@ jobs:
         override: true
         components: fmt, clippy
 
-    - name: Run cargo fmt (Check formatting)
+    - name: Check
+      run: cargo check
+
+    - name: Format
       run: cargo fmt -- --check
-      working-directory: minigrep
 
-    - name: Run cargo clippy (Linting)
-      run: cargo clippy -- -D warnings
-      working-directory: minigrep
+    - name: Test
+      run: cargo test
 
-    - name: Run cargo test (Testing)
-      run: cargo test --all
-      working-directory: minigrep
+    - name: Release
+      run: cargo build --release

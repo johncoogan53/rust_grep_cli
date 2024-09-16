@@ -17,3 +17,6 @@ lint:
 
 test:
 	cargo test
+
+release:
+	cargo build --release
