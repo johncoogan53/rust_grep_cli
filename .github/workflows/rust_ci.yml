@@ -26,17 +26,17 @@ jobs:
         override: true
 
     - name: Check
-      run: cargo check
+      run: make check
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: Format
-      run: cargo fmt -- --check
+      run: make format
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: Test
-      run: cargo test
+      run: make test
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: Release
-      run: cargo build --release
+      run: make release
       working-directory: ${{ env.WORKING_DIR }}
