@@ -1,23 +1,19 @@
-# Check the code for errors without building
+# Makefile for Rust Project
+
+
+all: check build format lint test
+
 check:
-    cargo check
+	cargo check
 
-# Format the code
-fmt:
-    cargo fmt --all
-
-# Build the project
 build:
-    cargo build
+	cargo build
 
-# Run tests
+format:
+	cargo fmt
+
+lint:
+	cargo clippy
+
 test:
-    cargo test
-
-# Clean the project
-clean:
-    cargo clean
-
-# Run the project
-run:
-    cargo run
+	cargo test
