@@ -24,7 +24,7 @@ jobs:
       with:
         toolchain: stable
         override: true
-        components: fmt, clippy
+        components: clippy
 
     - name: Check
       run: cargo check
