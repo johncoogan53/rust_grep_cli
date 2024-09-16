@@ -1,3 +1,5 @@
+[![CI](https://github.com/johncoogan53/rust_grep_cli/actions/workflows/rust_ci.yml/badge.svg)](https://github.com/johncoogan53/rust_grep_cli/actions/workflows/rust_ci.yml)
+
 # Rust CLI for grep
 Rust implemented Globally Search a Regular Expression and Print (GREP) CLI. This is a project used to get more familiar with the rust language. It is also an opportunity to set up a robust template for Makefile + workflows to make a CI/CD pipeline. 
 
