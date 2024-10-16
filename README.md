@@ -9,3 +9,4 @@ Key features:
 - Template CI/CD with jobs for Check, Format, Lint, and Release with a binary artifact generated at the end.
 
 Working directory can be changed in the yml file to generate build scripts for multiple binaries with ease.
+Binary: https://github.com/johncoogan53/rust_grep_cli/actions/runs/11372599746/artifacts/2065409682
